@@ -16,6 +16,7 @@ Trong file cấu hình (parent main.tf)
 ![alt text](image-1.png)
 
 Trong module security groups:
+
 ![alt text](image-2.png)
 
  Hoặc có thể khai báo là allowed_ssh_ip = [ ] trong cấu hình, sau đó vào Public Security Group -> Inbound rules -> edit Inbound rules -> Chỉnh mục Source thành My_ip -> save rules như minh chứng sau thì mới có thể ssh đến được Public EC2(vì địa chỉ public ip luôn thay đổi nên phần này mình chưa kiểm soát được).
