@@ -49,7 +49,7 @@ module "subnet_module" {
 
 module "nat_gw_module" {
   source            = "./modules/nat_gw_module"
-  private_subnet_id = module.subnet_module.private_subnet_id
+  public_subnet_id = module.subnet_module.public_subnet_id
 }
 
 module "key_pair_module" {
