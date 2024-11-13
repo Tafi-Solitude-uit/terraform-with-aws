@@ -15,14 +15,16 @@ resource "aws_instance" "public_instance" {
     Name = "anhtaiht-Public-EC2-Instance"
   }
 
-  provisioner "local-exec" {
-    command = templatefile("${var.host_os}-ssh-config.tpl", {
-      hostname = self.public_ip,
-      user = "ubuntu",
-      identityfile = "~/.ssh/anhtaihtkey"
-    })
-    interpreter = var.host_os == "windows" ? ["Powershell", "-Command"] : ["bash", "-c"]
-  }
+  // Provisioner to create ssh config file
+  //command line các dòng dưới nếu tự động hóa quy trình với github actions
+  # provisioner "local-exec" {
+  #   command = templatefile("${var.host_os}-ssh-config.tpl", {
+  #     hostname = self.public_ip,
+  #     user = "ubuntu",
+  #     identityfile = "~/.ssh/anhtaihtkey"
+  #   })
+  #   interpreter = var.host_os == "windows" ? ["Powershell", "-Command"] : ["bash", "-c"]
+  # }
 }
 
 //Private EC2 instance
