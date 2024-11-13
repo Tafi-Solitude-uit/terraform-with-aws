@@ -11,7 +11,7 @@ module "ec2_module" {
   private_subnet_id = module.subnet_module.private_subnet_id
   public_ec2_sg     = module.security_groups_module.public_security_group_id
   private_ec2_sg    = module.security_groups_module.private_security_group_id
-  key_name          = module.key_pair_module.key_pair_id
+  key_name          = var.ssh_key_name
   host_os           = "windows"
 }
 
