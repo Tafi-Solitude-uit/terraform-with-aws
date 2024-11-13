@@ -19,7 +19,7 @@ resource "aws_security_group" "anhtaiht_default_sg" {
   }
 
   tags = {
-    Name = "default-security-group"
+    Name = "default-security-group-anhtaiht"
   }
 }
 
@@ -42,6 +42,10 @@ resource "aws_security_group" "anhtaiht_public_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = {
+    Name = "public-security-group-anhtaiht"
+  }
 }
 
 // Private EC2 security group
@@ -62,5 +66,9 @@ resource "aws_security_group" "anhtaiht_private_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "private-security-group-anhtaiht"
   }
 }

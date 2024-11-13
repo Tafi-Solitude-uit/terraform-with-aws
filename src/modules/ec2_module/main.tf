@@ -7,6 +7,14 @@ resource "aws_instance" "public_instance" {
   key_name        = var.key_name
   user_data       = file("userdata.tpl")
 
+  ebs_optimized = true  # Bật EBS optimized
+  monitoring = true  # Bật detailed monitoring
+
+  metadata_options {
+    http_tokens = "required"  # Yêu cầu sử dụng IMDSv2
+    http_endpoint = "enabled"  # Bật endpoint metadata
+  }
+
   root_block_device {
     volume_size = 10
   }
@@ -35,6 +43,14 @@ resource "aws_instance" "private_instance" {
   security_groups = [var.private_ec2_sg]
   key_name        = var.key_name
   user_data       = file("userdata.tpl")
+
+  ebs_optimized = true  # Bật EBS optimized
+  monitoring = true  # Bật detailed monitoring
+
+  metadata_options {
+    http_tokens = "required"         # Chỉ cho phép IMDSv2
+    http_endpoint = "enabled"        # Bật endpoint metadata
+  }
 
   root_block_device {
     volume_size = 10
