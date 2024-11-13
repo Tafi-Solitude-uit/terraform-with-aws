@@ -12,7 +12,7 @@ module "ec2_module" {
   public_ec2_sg     = module.security_groups_module.public_security_group_id
   private_ec2_sg    = module.security_groups_module.private_security_group_id
   key_name          = module.key_pair_module.key_pair_id
-  host_os           = "linux"
+  host_os           = "windows"
 }
 
 // Lấy địa chỉ public ip trên trang web dưới và gán giá trị vào allowed_ssh_ip trong module security_groups_module
