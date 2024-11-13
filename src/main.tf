@@ -15,6 +15,7 @@ module "ec2_module" {
   host_os           = "windows"
 }
 
+//test workflow
 // Lấy địa chỉ public ip trên trang web dưới và gán giá trị vào allowed_ssh_ip trong module security_groups_module
 data "http" "my_ip" {
   url = "https://checkip.amazonaws.com/"
