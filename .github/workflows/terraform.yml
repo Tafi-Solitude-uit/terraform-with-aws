@@ -46,6 +46,10 @@ jobs:
         id: plan
         run: terraform plan
 
+      - name: Delete existing Key Pair (if exists)
+        run: |
+          aws ec2 delete-key-pair --key-name anhtaihtkey || true
+
       - name: Terraform apply
         id: apply
         run: terraform apply -auto-approve
