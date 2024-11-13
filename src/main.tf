@@ -12,7 +12,7 @@ module "ec2_module" {
   public_ec2_sg     = module.security_groups_module.public_security_group_id
   private_ec2_sg    = module.security_groups_module.private_security_group_id
   key_name          = module.key_pair_module.key_pair_id
-  host_os           = "windows"
+  host_os           = "linux"
 }
 
 // Lấy địa chỉ public ip trên trang web dưới và gán giá trị vào allowed_ssh_ip trong module security_groups_module
@@ -23,7 +23,7 @@ data "http" "my_ip" {
 module "security_groups_module" {
   source         = "./modules/security_groups_module"
   vpc_id         = module.vpc_module.vpc_id
-  allowed_ssh_ip = format("%s/32", trimspace(data.http.my_ip.body))
+  allowed_ssh_ip = format("%s/32", trimspace(data.http.my_ip.response_body))
 }
 
 module "igw_module" {
