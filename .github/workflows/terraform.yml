@@ -28,6 +28,15 @@ jobs:
           terraform_version: 1.9.7
           terraform_wrapper: false
 
+      # Bước Docker: Chạy Checkov từ Docker container
+      - name: Run Checkov scan using Docker
+        run: |
+          docker run --rm \
+            -v $(pwd):/workspace \
+            -e CHECKOV_VERSION=2.0.0 \
+            bridgecrew/checkov:latest \
+            -d /workspace
+
       - name: Create SSH directory
         run: mkdir -p ~/.ssh
 
